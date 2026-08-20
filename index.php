@@ -4,6 +4,8 @@ declare(strict_types=1);
 require_once __DIR__ . '/includes/reviews.php';
 $config = require __DIR__ . '/includes/config.php';
 $reviews = load_reviews();
+$stylesVersion = (string) (filemtime(__DIR__ . '/styles.css') ?: time());
+$scriptVersion = (string) (filemtime(__DIR__ . '/script.js') ?: time());
 
 function e(string $value): string
 {
@@ -44,7 +46,7 @@ function social_item(string $url, string $label, string $iconClass): string
       }
     };
   </script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=<?= e($stylesVersion) ?>">
 </head>
 <body class="bg-white text-ink antialiased">
   <header class="hero-section" id="top">
@@ -147,6 +149,6 @@ function social_item(string $url, string $label, string $iconClass): string
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=<?= e($scriptVersion) ?>"></script>
 </body>
 </html>
