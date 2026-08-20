@@ -108,10 +108,23 @@ function social_item(string $url, string $label, string $iconClass): string
       <?php endif; ?>
     </section>
 
-    <section class="closing-banner" aria-label="Yorvis brand message">
-      <p>YOUR EXPERIENCE MATTERS.</p>
-      <div class="marquee" aria-hidden="true">
-        <span>THINK BEYOND</span><i></i><span>BUILD BETTER</span><i></i><span>THINK BEYOND</span>
+    <section class="closing-banner" aria-labelledby="closing-title">
+      <div class="closing-orbit closing-orbit--one" aria-hidden="true"></div>
+      <div class="closing-orbit closing-orbit--two" aria-hidden="true"></div>
+      <div class="closing-inner">
+        <div class="closing-kicker">
+          <span>02 — OUR MINDSET</span>
+          <span>YORVIS / 2026</span>
+        </div>
+        <p>YOUR EXPERIENCE MATTERS.</p>
+        <h2 id="closing-title">
+          <span>THINK BEYOND.</span>
+          <span>BUILD BETTER.</span>
+        </h2>
+        <div class="closing-signoff">
+          <span class="closing-line" aria-hidden="true"></span>
+          <span>Different thinking creates different results.</span>
+        </div>
       </div>
     </section>
   </main>

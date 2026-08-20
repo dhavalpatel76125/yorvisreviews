@@ -61,9 +61,8 @@ a { color: inherit; }
 .logo-crop {
   display: block;
   width: 190px;
-  height: 58px;
-  background: url("assets/yorvis-wordmark-purple.png") center 52% / 200% auto no-repeat;
-  mix-blend-mode: screen;
+  height: 68px;
+  background: url("assets/yorvis-wordmark-purple.png") center 52.4% / 184% auto no-repeat;
 }
 
 .nav-chip {
@@ -199,11 +198,39 @@ a { color: inherit; }
 .reveal-card { opacity: 0; transform: translateY(24px); }
 .reveal-card.is-visible { opacity: 1; transform: translateY(0); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.8,.2,1); }
 
-.closing-banner { padding: 84px 0; overflow: hidden; color: #fff; background: var(--purple); }
-.closing-banner > p { margin: 0 0 35px; text-align: center; font-size: 12px; font-weight: 800; letter-spacing: .2em; }
-.marquee { display: flex; width: max-content; align-items: center; gap: 34px; transform: translateX(-4%); white-space: nowrap; }
-.marquee span { font-size: clamp(62px, 9vw, 142px); font-weight: 900; letter-spacing: -.07em; line-height: .9; }
-.marquee i { display: block; width: 20px; height: 20px; border-radius: 50%; background: #fff; }
+.closing-banner {
+  position: relative;
+  padding: clamp(92px, 12vw, 170px) 24px;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(255,255,255,.16), transparent 28%),
+    linear-gradient(135deg, #5d00dc 0%, #7600ff 48%, #8f24ff 100%);
+  isolation: isolate;
+}
+
+.closing-banner::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: .12;
+  background-image: linear-gradient(rgba(255,255,255,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.22) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, transparent, #000 26%, #000 75%, transparent);
+  content: "";
+}
+
+.closing-inner { position: relative; z-index: 2; width: min(100%, 1280px); margin: 0 auto; }
+.closing-kicker { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.35); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
+.closing-inner > p { margin: clamp(52px, 7vw, 88px) 0 28px; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: .24em; }
+.closing-inner h2 { margin: 0; text-align: center; font-size: clamp(58px, 9vw, 126px); font-weight: 900; letter-spacing: -.075em; word-spacing: .08em; line-height: .8; text-transform: uppercase; }
+.closing-inner h2 span { display: block; white-space: nowrap; }
+.closing-inner h2 span:last-child { margin-top: .24em; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.92); text-stroke: 2px rgba(255,255,255,.92); }
+.closing-signoff { margin-top: clamp(52px, 7vw, 88px); display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.closing-line { width: 56px; height: 2px; background: rgba(255,255,255,.72); }
+.closing-orbit { position: absolute; z-index: -1; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; }
+.closing-orbit--one { top: -45%; right: -12%; width: 58vw; aspect-ratio: 1; }
+.closing-orbit--two { right: 8%; bottom: -65%; width: 40vw; aspect-ratio: 1; }
 
 .site-footer {
   padding: 72px max(24px, calc((100vw - 1440px) / 2)) 28px;
@@ -214,7 +241,7 @@ a { color: inherit; }
   background: var(--ink);
 }
 
-.logo-crop--footer { width: 180px; height: 54px; margin-bottom: 24px; }
+.logo-crop--footer { width: 180px; height: 64px; margin-bottom: 24px; }
 .footer-brand > p { margin: 0; color: #a9abba; font-size: 11px; line-height: 1.75; letter-spacing: .06em; }
 .footer-socials > p, .footer-whatsapp > p { margin: 8px 0 24px; color: #858898; font-size: 10px; font-weight: 700; }
 .social-row { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -241,7 +268,7 @@ a.whatsapp-link:hover { transform: translateY(-3px); }
 @media (max-width: 640px) {
   .site-nav, .hero-content { width: min(100% - 36px, 1440px); }
   .site-nav { padding: 18px 0; }
-  .logo-crop { width: 142px; height: 46px; }
+  .logo-crop { width: 150px; height: 58px; background-size: 178% auto; }
   .nav-chip { width: 42px; height: 42px; padding: 0; justify-content: center; font-size: 0; }
   .nav-chip i { font-size: 15px; }
   .hero-section { min-height: 760px; background-position: 62% center; }
@@ -255,8 +282,13 @@ a.whatsapp-link:hover { transform: translateY(-3px); }
   .review-card { min-height: 360px; padding: 30px; }
   .review-card footer { grid-template-columns: 28px 1fr; }
   .verified-label { grid-column: 2; }
-  .marquee { gap: 22px; }
-  .marquee i { width: 13px; height: 13px; }
+  .closing-banner { padding-right: 18px; padding-left: 18px; }
+  .closing-kicker { font-size: 8px; }
+  .closing-inner h2 { font-size: clamp(47px, 14vw, 70px); line-height: .88; }
+  .closing-inner h2 span { white-space: normal; }
+  .closing-inner h2 span:last-child { -webkit-text-stroke-width: 1.2px; }
+  .closing-signoff { align-items: flex-start; font-size: 9px; line-height: 1.7; }
+  .closing-line { flex: 0 0 34px; margin-top: 7px; }
   .site-footer { padding: 60px 20px 24px; grid-template-columns: 1fr; gap: 42px; }
   .footer-whatsapp { grid-column: auto; grid-row: auto; }
   .footer-bottom { margin-top: 15px; gap: 16px; flex-direction: column; }
